@@ -26,3 +26,5 @@ jobs:
         python -m pip install pytz
     - name: Run script
       run: python OpenWeatherMap_Main.py
+    - name: Run another script
+      run: python opencsv.py
