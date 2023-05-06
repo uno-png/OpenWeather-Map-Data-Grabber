@@ -3,7 +3,7 @@ import requests
 import os
 import csv
 import pandas as pd
-from datetime import datetime
+from datetime import datetimex
 import pytz
 
 path_openWeatherData = os.path.join(os.getcwd(), "openWeatherData.csv")
@@ -11,7 +11,7 @@ path_openWeatherData = os.path.join(os.getcwd(), "openWeatherData.csv")
 # Replace YOUR_API_KEY with your actual API key
 api_key = '4c3e2a766c6698e331c26ea396103a71'
 
-# Specify the latitude and longitude
+# Specify the latitude and longitude    
 lat = 14.393530
 lon = 121.193945
 
@@ -35,6 +35,7 @@ if hour < 1 or hour > 24:
     print("Current time is not within the specified time range (1pm-4pm)")
 else:
     # Check if data for current date and time has already been stored
+    df_existing = pd.Dataframe()
     df_existing = pd.read_csv(path_openWeatherData)
     existing_data = df_existing[(df_existing['year']==year) & (df_existing['month']==month) & (df_existing['day']==day)]
     if not existing_data.empty:
