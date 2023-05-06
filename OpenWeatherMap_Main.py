@@ -1,9 +1,8 @@
-# Fetch Current Weather Data
 import requests
 import os
 import csv
 import pandas as pd
-from datetime import datetimex
+from datetime import datetime
 import pytz
 
 path_openWeatherData = os.path.join(os.getcwd(), "openWeatherData.csv")
@@ -35,7 +34,7 @@ if hour < 1 or hour > 24:
     print("Current time is not within the specified time range (1pm-4pm)")
 else:
     # Check if data for current date and time has already been stored
-    df_existing = pd.Dataframe()
+    df_existing = pd.DataFrame()
     df_existing = pd.read_csv(path_openWeatherData)
     existing_data = df_existing[(df_existing['year']==year) & (df_existing['month']==month) & (df_existing['day']==day)]
     if not existing_data.empty:
@@ -63,7 +62,7 @@ else:
         })
         
         # Append the new data to the existing DataFrame and save to file
-        df_existing = df_existing.append(df_openWeatherData)
+        df_existing = df_existing._append(df_openWeatherData)
         df_existing.to_csv(path_openWeatherData, index=False, mode='w')
 
         df_existing.head()
