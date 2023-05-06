@@ -1,10 +1,12 @@
 # Fetch Current Weather Data
 import requests
+import os
+import csv
 import pandas as pd
 from datetime import datetime
 import pytz
 
-path_openWeatherData = "openWeatherData.csv"
+path_openWeatherData = os.path.join(os.getcwd(), "example.csv")
 
 # Replace YOUR_API_KEY with your actual API key
 api_key = '4c3e2a766c6698e331c26ea396103a71'
